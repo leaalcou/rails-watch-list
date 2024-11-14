@@ -1,0 +1,11 @@
+<h1>Movies's Categories</h1>
+
+<ul>
+<% @lists.each do |list|%>
+<li>
+  <%= link_to list.name, list_path(list) %>
+  </li>
+<% end %>
+</ul>
+
+<%= link_to "New list", new_list_path %>
