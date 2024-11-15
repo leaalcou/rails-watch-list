@@ -17,5 +17,30 @@
   <% end %>
 </ul>
 
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Add a bookmark
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h3>New Bookmark</h3>
+        <%= simple_form_for([@list, @bookmark]) do |f| %>
+          <%= f.input :comment %>
+          <%= f.association :movie, collection: Movie.all, prompt: "Choose a movie"  %>
+          <%= f.submit "Save", class: "btn", data: {bs_dismiss: "modal"}%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <%= link_to "go back", lists_path %>
 <%= link_to "Add a bookmark", new_list_bookmark_path(@list) %>
