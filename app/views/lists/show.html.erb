@@ -3,8 +3,17 @@
 <ul>
   <% @list.bookmarks.each do |bookmark| %>
     <li>
-      <%= link_to bookmark.movie.title, movie_path(bookmark.movie) %>
+      <%= bookmark.movie.title %>
     </li>
+    <div class="overview">
+      <%= bookmark.movie.overview %>
+      <br>
+      <%= bookmark.comment %> |
+      <%= link_to "Delete",
+        bookmark_path(bookmark),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+      %>
+    </div>
   <% end %>
 </ul>
 

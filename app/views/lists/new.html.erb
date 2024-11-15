@@ -1,4 +1,15 @@
-<%= simple_form_for(@list) do |f| %>
-  <%= f.input :name %>
-  <%= f.submit %>
-<% end %>
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Create a New List</h1>
+  <%= simple_form_for @list, html: { class: 'form-group' } do |form| %>
+    <div class="form-group">
+      <%= form.input :name, label: "List Name", input_html: { class: 'form-control' } %>
+    </div>
+    <br>
+    <div class="form-group text-center">
+      <%= form.button :submit, "Create List", class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+  <div class="text-center mt-4">
+    <%= link_to 'Back to Lists', lists_path, class: 'btn btn-secondary' %>
+  </div>
+</div>
